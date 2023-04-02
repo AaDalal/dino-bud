@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './circleNoTask.css';
 
 import ProgressBar from "./ProgressBar";
@@ -7,13 +7,24 @@ import TaskCard from './Individual-task';
 function CircleNoTask({ image, goal, tasks, addTask, removeTask, updateTask }) {
     const showButton = tasks.length < 4;
     const displayTasks = tasks.map(
-        task => <TaskCard name={task.title} completed={task.completed} key={task._id} />
+        task => <TaskCard 
+            name={task.title} 
+            completed={task.completed} 
+            key={task._id} 
+            updateTask={(title, completed) => updateTask(task._id, title, completed)} 
+            deleteTask={() => removeTask(task._id)} 
+            />
     )
     const [showInput, setShowInput] = useState(false)
 
     const handleButtonClick = () => {
       setShowInput(true)
     };
+
+    useEffect(() => {
+        console.log("tasks changed")
+        console.log(tasks)
+    })
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
