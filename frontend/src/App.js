@@ -38,7 +38,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path='/' exact={false} element={<ProtectedRoutes/>}>
               <Route path="/" exact element={<CreateTopic/>}/>
-              <Route path='/:topicId' exact element={<div style={{ height: "100%", width: "100%", maxHeight: "100vh", display: "flex", alignItems: "center" }}><LearningAssistantcopy/></div>}/>
+              <Route path='/:topicId' exact element={<div style={{ height: "100%", width: "100%", maxHeight: "100vh", display: "flex", alignItems: "center" }}><LearningAssistantcopy/><LearningAssistant></LearningAssistant></div>}/>
               <Route path="/page" element={<div>Hello</div>} />
             </Route>
           </Routes>
