@@ -4,6 +4,7 @@ import axios from '../Axios/axios'
 import classes from '../static/login.module.css';
 import resets from '../static/_resets.module.css';
 import { useNavigate } from 'react-router';
+import LoginDino from '../Images/dino_login.png';
 
 function SignUp({ location }) {
 
@@ -24,7 +25,13 @@ function SignUp({ location }) {
   }
 
   return (
-    <div className={`${resets.storybrainResets} ${classes.root}`}>
+    <div className={`${resets.storybrainResets} ${classes.root}`}
+    /* TODO: bad hack to restyle */
+    style={{
+      paddingTop: "100px",
+      paddingBottom: "100px"
+    }}
+    >
       <div className={classes.frame1707478296}>
         <div className={classes.frame90}>
           <div className={classes.frame1707478297}>
@@ -59,7 +66,12 @@ function SignUp({ location }) {
       </div>
       <div className={classes.frame1707478295}>
         <form className={classes.frame67} onSubmit={handleLogin}>
-          <div className={classes.unnamed}>🦖</div>
+          <div className={classes.unnamed}>
+            <img src={LoginDino} alt="dino" width="150px" height="150px" style={{
+              "-webkit-transform": "scaleX(-1)",
+              "transform": "scaleX(-1)"
+             }}></img>
+          </div>
           <div className={classes.frame65}>
             <div className={classes.email}>Name</div>
             <div className={classes.emailWrapper}>

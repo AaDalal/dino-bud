@@ -4,6 +4,7 @@ import axios from '../Axios/axios'
 import classes from '../static/login.module.css';
 import resets from '../static/_resets.module.css';
 import { useNavigate } from 'react-router';
+import LoginDino from '../Images/dino_login.png';
 
 function LoginPage({ location }) {
 
@@ -46,7 +47,7 @@ function LoginPage({ location }) {
               <div className={classes.frame84}>
                 <div className={classes.frame1707478300}>
                   <div className={classes.EverWantedToLearnSomethingButD}> 
-                    😳 Ever wanted to learn something but didn’t have time?
+                    Welcome back! 😃
                   </div>
                 </div>
                 <div className={classes.frame1707478301}>
@@ -62,7 +63,9 @@ function LoginPage({ location }) {
       </div>
       <div className={classes.frame1707478295}>
         <form className={classes.frame67} onSubmit={handleLogin}>
-          <div className={classes.unnamed}>🦖</div>
+          <div className={classes.unnamed}>
+            <img src={LoginDino} alt="dino" width="150px" height="150px"></img>
+          </div>
           <div className={classes.frame65}>
             <div className={classes.email}>Email</div>
             <div className={classes.emailWrapper}>
