@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router';
 function SignUp({ location }) {
 
   const navigate = useNavigate();
-  const { tokenDispatch, userDispatch } = useContext(UserContext);
+  const { setToken, setUser } = useContext(UserContext);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -16,9 +16,9 @@ function SignUp({ location }) {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    const response = await axios.post('/user/register', { email, password })
-    tokenDispatch(response.data.token, "token/setToken");
-    userDispatch(response.data.user, "user/setUser");
+    const response = await axios.post('/user/register', { email, password, name })
+    setToken(response.data.token);
+    setUser(response.data.user);
     localStorage.setItem("authToken", JSON.stringify(response.data.token))
     navigate(location?.state?.from || "/", { replace: true })
   }
@@ -61,7 +61,7 @@ function SignUp({ location }) {
         <form className={classes.frame67} onSubmit={handleLogin}>
           <div className={classes.unnamed}>🦖</div>
           <div className={classes.frame65}>
-            <div className={classes.email}>Email</div>
+            <div className={classes.email}>Name</div>
             <div className={classes.emailWrapper}>
               <input className={classes.enterEmail} placeholder='Enter name' type="text" value={name} onChange={(event) => setName(event.target.value)} ></input>
             </div>
@@ -85,7 +85,7 @@ function SignUp({ location }) {
           </button>
           <div className={classes.newUserSignUp}>
             <p className={classes.labelWrapper}>
-              <span className={classes.label}>New user?</span>
+              <span className={classes.label}>Already have an account?</span>
               <span className={classes.label2}> </span>
               <a className={classes.label3} href="/login">Log in</a>
             </p>

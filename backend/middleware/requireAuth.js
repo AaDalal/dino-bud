@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 const requireAuth = async (req, res, next) => {
     const { authorization } = req.headers;
     if (!authorization) {
-        return res.status(401).json({message:'Unauthorized'});
+        return res.status(401).json({message:'Unauthorized (you must be logged in)'});
     }
     const token = authorization.split(' ')[1]+"";
     try {
