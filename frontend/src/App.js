@@ -26,6 +26,8 @@ function App() {
         setUser(res.data.user)
       } catch (error) {
         setUser(null)
+        setToken(null)
+        localStorage.removeItem("authToken")
       }
     })();
   }, [token]);
