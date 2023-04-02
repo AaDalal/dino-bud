@@ -64,7 +64,7 @@ function CreateTopic() {
                     fontWeight: "bold"
                 }}
                 type="submit">
-                    Get started being accountable
+                    Get started!
                 </button>
             </div>
         </form>

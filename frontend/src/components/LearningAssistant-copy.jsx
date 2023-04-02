@@ -6,17 +6,33 @@ import CyldeProfileImage from "../Images/Ellipse 15.png";
 import { useParams } from "react-router-dom";
 import axios from "../Axios/axios"
 import UserContext from "../context/UserContext";
-import DebugDisplay from "./DebugDisplay";
 import NeedAPartner from "./NeedAPartner";
+import Egg from '../Images/Group 70.png';
+import DinoAnimated from '../Images/dino_animated.gif';
+import Hatchling from '../Images/image 20.png';
+import DinoWithEgg from '../Images/dino_login.png';
+import { selfURL } from "../constants";
+
 
 const LearningAssistantcopy = () => {
+  function dinoEgg(score) {
+    let img;
+    if (score <= 2) {
+        img = Egg;
+    } else if (score <= 4) {
+        img = Hatchling
+    } else if (score <= 6) {
+        img = DinoWithEgg
+    } else if (score === 8) {
+        img = DinoAnimated
+    }
+    return img
+  }
+
   // fetch the topic by id
   const { token, user } = useContext(UserContext);
   const { topicId } = useParams();
   const [topic, setTopic] = useState(null);
-
-  console.log("user")
-  console.log(user)
 
   const fetchTopic = useCallback(async () => {
     const response = await axios.get(`/topic/${topicId}`, { headers: { Authorization: `Bearer ${token}` } });
@@ -24,7 +40,7 @@ const LearningAssistantcopy = () => {
   }, [topicId, token])
 
   const removeTask = useCallback(async (taskId) => {
-    await axios.delete(`task/${topicId}`,  { headers: { Authorization: `Bearer ${token}` }, body: { id: taskId } });
+    await axios.delete(`ta  sk/${topicId}`,  { headers: { Authorization: `Bearer ${token}` }, body: { id: taskId } });
     fetchTopic();
   }, [topicId, token, fetchTopic])
 
@@ -56,17 +72,20 @@ const LearningAssistantcopy = () => {
   const partnerTasks = topic?.tasks.filter(task => task.user === topic.user2) || [];
   const hasPartner = topic?.user2 !== null;
   const isOwner = topic?.user1 === user?.id;
+  const score = topic?.tasks?.filter(task => task.completed).length || 0;
+  const otherUser = (topic?.user1 === user?.id ? topic?.user2?.name : topic?.user1?.name) || "someone";
 
   return (
     <div className="LearningAssistantcopy">
       <div className="header">
-        <button className="white-button">Ariya &#9660;</button>
+        <div className="white-button">⌛ 7 days until end of week</div>
+        <button className="white-button" onClick={() => navigator.clipboard.writeText(`${selfURL}/${topicId}`)}>Copy Link 📋</button>
       </div>
       <div className="main">
         { hasPartner ? (
           <div className="big-text">
             <span role="img" aria-label="sparkle">✨</span>
-            You're now Joseph's accountability partner
+            You're now {otherUser}'s accountability partner
             <span role="img" aria-label="sparkle">✨</span>
           </div>
         ) : (
@@ -80,6 +99,7 @@ const LearningAssistantcopy = () => {
         </div>
         <div className="circles">  
           <CircleNoTask 
+          disabled={isOwner}
           addTask={addTask}
           updateTask={updateTask}
           removeTask={removeTask}
@@ -89,13 +109,10 @@ const LearningAssistantcopy = () => {
           style={{
             alignSelf: "flex-start",
           }}/>
-          <div className="circle-2"
-          style={{
-            alignSelf: "center",
-          }}
-          ></div>
+          <img src={dinoEgg(score)} alt="dino" className="dino" />
           {hasPartner ? (
             <CircleNoTask 
+            disabled={!isOwner}
             addTask={addTask}
             updateTask={updateTask}
             removeTask={removeTask}
@@ -103,7 +120,8 @@ const LearningAssistantcopy = () => {
               alignSelf: "flex-start",
             }}
             goal={topic?.user2Goal}
-            tasks={partnerTasks} image={CyldeProfileImage} 
+            tasks={partnerTasks} 
+            image={CyldeProfileImage} 
             />
           )
           : <NeedAPartner isOwner={isOwner} onClick={onJoin} />}

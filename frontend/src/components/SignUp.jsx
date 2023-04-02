@@ -80,7 +80,7 @@ function SignUp({ location }) {
           </div>
           <button className={classes.frame83} type="submit">
             <div className={classes.frame24}>
-              <div className={classes.login}>Login</div>
+              <div className={classes.login}>Sign Up</div>
             </div>
           </button>
           <div className={classes.newUserSignUp}>

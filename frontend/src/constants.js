@@ -1,0 +1,1 @@
+export const selfURL = 'http://localhost:3000';
