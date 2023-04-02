@@ -15,14 +15,16 @@ const LearningAssistantcopy = () => {
   const { topicId } = useParams();
   const [topic, setTopic] = useState(null);
 
+  console.log("user")
+  console.log(user)
+
   const fetchTopic = useCallback(async () => {
     const response = await axios.get(`/topic/${topicId}`, { headers: { Authorization: `Bearer ${token}` } });
-    console.log(response.data)
     setTopic(response.data);
   }, [topicId, token])
 
   const removeTask = useCallback(async (taskId) => {
-    await axios.delete(`${topicId}/task/${taskId}`, { headers: { Authorization: `Bearer ${token}` } });
+    await axios.delete(`task/${topicId}`,  { headers: { Authorization: `Bearer ${token}` }, body: { id: taskId } });
     fetchTopic();
   }, [topicId, token, fetchTopic])
 
@@ -31,8 +33,8 @@ const LearningAssistantcopy = () => {
     fetchTopic();
   }, [topicId, token, fetchTopic])
 
-  const updateTask = useCallback(async (taskId, title) => {
-    await axios.post(`${topicId}/task/${taskId}`, { title }, { headers: { Authorization: `Bearer ${token}` } });
+  const updateTask = useCallback(async (taskId, title, completed) => {
+    await axios.post(`task/${topicId}`, { title, completed, id: taskId }, { headers: { Authorization: `Bearer ${token}` }});
     fetchTopic();
   }, [topicId, token, fetchTopic])
 
@@ -45,8 +47,13 @@ const LearningAssistantcopy = () => {
     fetchTopic();
   }
 
-  const myTasks = topic?.tasks.filter(task => task.user === user?.id) || [];
-  const partnerTasks = topic?.tasks.filter(task => task.user !== user?.id) || [];
+  useEffect(() => {
+    console.log("topic changed")
+    console.log(topic)
+  }, [topic])
+
+  const myTasks = topic?.tasks.filter(task => task.user === topic.user1) || [];
+  const partnerTasks = topic?.tasks.filter(task => task.user === topic.user2) || [];
   const hasPartner = topic?.user2 !== null;
   const isOwner = topic?.user1 === user?.id;
 

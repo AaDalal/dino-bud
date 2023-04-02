@@ -2,13 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Individual-task.css';
 
-function TaskCard({ name, completed }) {
+function TaskCard({ name, completed, deleteTask, updateTask }) {
   return (
     <div className={`task-card ${completed ? 'completed' : ''}`}>
       <div className="task-card-text">
         <p>{name}</p>
       </div>
-      <div className="task-card-icon">
+      <button 
+      style={{
+        backgroundColor: "transparent",
+        border: "none",
+        outline: "none",
+      }}
+      className="task-card-icon" onClick={() => updateTask(name, !completed)}
+      >
         {completed ? (
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="11" cy="11" r="10" fill="#4CAF50" stroke="white" strokeWidth="2"/>
@@ -20,7 +27,7 @@ function TaskCard({ name, completed }) {
             <path d="M8 11H14" stroke="#9B9B9B" strokeWidth="1.5" strokeLinecap="round"/>
           </svg>
         )}
-      </div>
+      </button>
     </div>
   );
 }
