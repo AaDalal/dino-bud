@@ -1,1 +1,1 @@
-export const selfURL = 'http://localhost:3000';
+export const selfURL = 'https://dino-bud.vercel.app';

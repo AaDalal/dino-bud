@@ -50,7 +50,7 @@ const LearningAssistantcopy = () => {
   }, [topicId, token, fetchTopic])
 
   const updateTask = useCallback(async (taskId, title, completed) => {
-    await axios.post(`task/${topicId}`, { user1Goal, user2Goal, completed, id: taskId }, { headers: { Authorization: `Bearer ${token}` }});
+    await axios.post(`task/${topicId}`, { title, completed, id: taskId }, { headers: { Authorization: `Bearer ${token}` }});
     fetchTopic();
   }, [topicId, token, fetchTopic])
 
