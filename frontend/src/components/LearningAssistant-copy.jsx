@@ -75,8 +75,30 @@ const LearningAssistantcopy = () => {
   const score = topic?.tasks?.filter(task => task.completed).length || 0;
   const otherUser = (topic?.user1 === user?.id ? topic?.user2?.name : topic?.user1?.name) || "someone";
 
+  const overlay = (
+    <div style={{
+      position: "absolute",
+      zIndex: 200,
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      height: "100vh",
+      width: "100vw",
+      backgroundColor: "rgba(255,255,255, 1)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    }}>
+      <div className="big-text">
+        404: Something's not right 😔
+      </div>
+    </div>
+  )
+
   return (
     <div className="LearningAssistantcopy">
+      {topic === null && overlay}
       <div className="header">
         <div className="white-button">⌛ 7 days until end of week</div>
         <button className="white-button" onClick={() => navigator.clipboard.writeText(`${selfURL}/${topicId}`)}>Copy Link 📋</button>
