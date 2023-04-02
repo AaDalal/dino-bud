@@ -1,0 +1,98 @@
+.LearningAssistant {
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 10px;
+    padding: 30px;
+    position: fixed;
+    right: 2%;
+    top: 3%;
+    bottom: 3%;
+    width: 17%;
+    z-index: 1;
+    transition: all 0.3s ease-out;
+  }
+  
+  .Title{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .ChatHeader{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+
+  /* .SettingsIcon {
+    font-size: 20px;
+    position: absolute;
+    top: 20px;
+    right: -20px;
+    cursor: pointer;
+  }
+   */
+  /* .LearningAssistant--hidden {
+    right: -300px;
+  } */
+/*   
+  .ShowHideButton {
+    background-color: lightblue;
+    border-radius: 10px;
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 100px;
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+  } */
+  
+  /* .ShowHideButton i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } */
+  
+  /* .LearningAssistant--hidden + .ShowHideButton {
+    left: -30px;
+  } */
+  
+  .ChatContent{
+    width: 100%;
+  }
+
+  .ChatContent input[type="text"] {
+    max-width: 100%;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 35px;
+    border-radius: 8px;
+    box-shadow: 2px;
+    border: 1px solid #000000;
+    margin-top: 10px;
+    padding: 5px;
+
+    /* padding: 10px; */
+  }
+
+  .ResourcesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    max-height: 50%; /* Set the maximum height of the container */
+    overflow: auto; /* Set the overflow property to 'auto' to make it scrollable */
+  }
+  
+.ChatContent{
+    width: 100%;
+}
+.Subtitle{
+    font-weight: 700;
+font-size: 16px;
+line-height: 22px;
+}
+

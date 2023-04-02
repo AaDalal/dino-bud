@@ -1,0 +1,38 @@
+.task-card {
+    width: 250px;
+    height: 45px;
+    background: #FBFBFC;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 15px;
+    font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 19px;
+  }
+  
+  .task-card.completed {
+    background: #F0FFF4;
+  }
+  
+  .task-card-text {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 20px;
+  }
+  
+  .task-card-icon {
+    flex-shrink: 0;
+  }
+  
