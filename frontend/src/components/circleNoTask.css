@@ -40,3 +40,18 @@
     font-weight: 700;
     font-size: 18px;
   }
+
+  .input-task {
+    width: 240px; /* 260px total with padding */
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    border-radius: 15px;
+    padding: 10px;
+  }

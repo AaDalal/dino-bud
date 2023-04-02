@@ -1,0 +1,26 @@
+.holder {
+    height: 100%;
+    border-style: dashed;
+    border-radius: 20px;
+    width: 33%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-button {
+    width: 250px;
+    height: 46px;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    border-radius: 23px;
+}

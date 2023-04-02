@@ -6,7 +6,7 @@ function TaskCard({ name, completed }) {
   return (
     <div className={`task-card ${completed ? 'completed' : ''}`}>
       <div className="task-card-text">
-        <p>Learn Card Sorting</p>
+        <p>{name}</p>
       </div>
       <div className="task-card-icon">
         {completed ? (

@@ -2,18 +2,17 @@ import topicModel from '../models/topicModel.js'
 import userModel from '../models/userModel.js'
 
 const addTopic = async (req, res) => {
-    const { title, user1 } = req.body;
+    const { user1Goal } = req.body;
 
     // TODO: decide on this
     // for now, user2 is always set to null on topic creation
     const user2 = null
 
     // assert that the first user is the logged in user
-    if (user1 != req.user.id) return res.status(401).json({ message: "Unauthorized" })
-    if (user2 !== null && !(await userModel.findOne({ _id: user2 }))) return res.status(400).json({ message: "Invalid user2" })
+    if (user2 !== null && !(await userModel.findOneById({ _id: user2 }))) return res.status(400).json({ message: "Invalid user2" })
 
     try {
-        const topic = new topicModel({ title, user1, user2 });
+        const topic = new topicModel({ user1: req.user.id, user2, user1Goal, user2Goal: null, tasks: [] });
         const result = await topic.save();
         res.status(200).json(result);
     } catch (error) {
@@ -32,16 +31,18 @@ const getTopic = async (req, res) => {
     const topic = await topicModel.findOne({ _id: req.params.topicId })    
     
     // display the tasks along side the topic
-    topic.populate("tasks")
+    await topic.populate("tasks")
 
     return res.status(200).json(topic)
 }
 
 const updateTopic = async (req, res) => {
     const { topicId } = req.params;
-    const { title } = req.body; // can only update title
+    const { user1Goal, user2Goal } = req.body; // can only update title
+
+    // TODO: add validation that user1 only sets their own goal (& vice versa)
     try {
-        const result = await topicModel.findOneAndUpdate({ _id: topicId }, { title });
+        const result = await topicModel.findOneAndUpdate({ _id: topicId }, { user1Goal, user2Goal }, { new: true });
         res.status(200).json(result);
     } catch (error) {
         console.error(error);
@@ -51,7 +52,8 @@ const updateTopic = async (req, res) => {
 
 const addUserToTopic = async (req, res) => {
     const { topicId } = req.params;
-    const topic = topicModel.findOne({ _id: topicId })
+    const topic = await topicModel.findOne({ _id: topicId })
+    if (topic.user2) return res.status(400).json({ message: "This topic already has two users" })
     if (topic.user1 == req.user.id) return res.status(400).json({ message: "You are already in this topic" })
 
     try {

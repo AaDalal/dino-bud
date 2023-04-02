@@ -11,7 +11,8 @@ const requireTopicOwnership = async (req, res, next) => {
     const topic = await topicModel.findOne({ _id: req.params.topicId })
 
     if (!topic) return res.status(404).json({ message: "Topic not found" })
-    if (topic.user1 != userId && topic.user2 != userId) return res.status(401).json({ message: "Unauthorized" })
+    // if user2 is not set, then allow anyone to access the topic
+    if (topic.user1 != userId && user2 && topic.user2 != userId) return res.status(401).json({ message: "Unauthorized" })
     next()
 }
 export default requireTopicOwnership
