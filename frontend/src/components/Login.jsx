@@ -22,7 +22,7 @@ function LoginPage({ location }) {
         tokenDispatch(response.data.token, "token/setToken");
         localStorage.setItem("authToken", JSON.stringify(response.data.token))
       })
-      navigate(location?.state?.from || "/", { replace: true })
+      navigate(location?.state?.from || -1, { replace: true })
 
   }
 
@@ -82,7 +82,7 @@ function LoginPage({ location }) {
           </button>
           <div className={classes.newUserSignUp}>
             <p className={classes.labelWrapper}>
-              <span className={classes.label}>New user?</span>
+              <span className={classes.label}>Already have an account?</span>
               <span className={classes.label2}> </span>
               <a className={classes.label3} href="/signup">Sign up</a>
             </p>

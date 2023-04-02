@@ -87,7 +87,7 @@ function SignUp({ location }) {
             <p className={classes.labelWrapper}>
               <span className={classes.label}>New user?</span>
               <span className={classes.label2}> </span>
-              <a className={classes.label3} href="/signup">Sign up</a>
+              <a className={classes.label3} href="/login">Log in</a>
             </p>
           </div>
         </form>
