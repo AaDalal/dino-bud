@@ -14,7 +14,7 @@
   background-color: rgba(255, 255, 255, 0);
   margin: 5px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: calc(100% - 10px);
   margin-bottom: 20px;
 }
@@ -25,8 +25,9 @@
   border-radius: 10px;
   padding: 10px 15px;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: semibold;
   cursor: pointer;
+  font: "Satoshi";
 }
 
 .main {
@@ -64,12 +65,10 @@
   flex: 1;
 }
 
-.circle-2 {
+.dino {
   width: 140px;
   height: 140px;
-  border-radius: 50%;
-  background-color: #D4D6E3;
-  background-image: url(../Images/🥚.png);
+  border-radius: 25%;
   background-size: cover;
   background-position: center;
 }
