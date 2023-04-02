@@ -1,0 +1,83 @@
+.LearningAssistantcopy {
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 10px;
+    padding: 30px;
+    position: fixed;
+    left: 2%;
+    top: 3%;
+    bottom: 3%;
+    width: 69.5%;
+    z-index: 1;
+  }
+
+/*   
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+  } */
+  
+  .header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .white-button {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .big-text {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 43px;
+    text-align: center;
+    margin-bottom: 0px;
+  }
+  
+  .small-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .circles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .circle-2 {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background-color: #D4D6E3;
+    margin-right: 100px;
+    margin-left: 100px;
+    background-image: url(../Images/🥚.png);
+    background-size: cover;
+    background-position: center;
+  }
+
+

@@ -1,0 +1,66 @@
+.circle-3 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #d50000;
+    background-image: url(../Images/Ellipse\ 15.png);
+    background-size: cover;
+    background-position: center;
+    margin-right: 100px;
+
+  }
+  
+.circle-3 {
+    position: relative;
+  }
+  .circle-3 .div-under {
+    position: absolute;
+    bottom: -50px; /* adjust this value as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .circle-3 .div-under-topic {
+    position: absolute;
+    bottom: -80px; /* adjust this value as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .circle-3 .div-under-tasks {
+    position: absolute;
+    bottom: -351px; /* adjust this value as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  white-space: nowrap;
+    overflow: hidden;
+  }
+  .button-no-task{
+    width: 250px;
+    height: 45px;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Satoshi';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #F3F3F3;
+    border-radius: 15px;
+  }
