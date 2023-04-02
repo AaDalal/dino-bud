@@ -6,8 +6,8 @@ import userReducer from './reducer/userReducer';
 import axios from './Axios/axios.js';
 import ProtectedRoutes from './components/protectedRoutes';
 import UserContext from './context/UserContext';
-import Login from './pages/Login';
-import Register from './components/Register';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 
 import React from "react";
 import "./App.css";
@@ -44,7 +44,7 @@ function App() {
           <Routes>
             <Route path='/' exact element={<div><LearningAssistantcopy/><LearningAssistant/></div>}/>
             <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/signup" element={<SignUp />} />
             <Route path='/' exact={false} element={<ProtectedRoutes/>}>
               <Route path="/page" element={<div>Hello</div>} />
             </Route>
