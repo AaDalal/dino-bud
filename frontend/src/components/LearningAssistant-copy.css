@@ -1,13 +1,10 @@
 .LearningAssistantcopy {
     background: rgba(255, 255, 255, 0.75);
     border-radius: 10px;
-    padding: 30px;
-    position: fixed;
-    left: 2%;
-    top: 3%;
-    bottom: 3%;
     width: 69.5%;
+    margin-left: 3%;
     z-index: 1;
+    height: 90%;
   }
 
 /*   
@@ -21,9 +18,10 @@
   } */
   
   .header {
+    margin: 5px;
     display: flex;
     justify-content: flex-end;
-    width: 100%;
+    width: calc(100% - 10px);
     margin-bottom: 20px;
   }
   
@@ -63,9 +61,10 @@
   
   .circles {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
     margin-top: 20px;
+    width: 70%;
   }
   
   .circle-2 {
@@ -73,8 +72,6 @@
     height: 140px;
     border-radius: 50%;
     background-color: #D4D6E3;
-    margin-right: 100px;
-    margin-left: 100px;
     background-image: url(../Images/🥚.png);
     background-size: cover;
     background-position: center;

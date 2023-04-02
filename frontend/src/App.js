@@ -42,7 +42,7 @@ function App() {
     <UserContext.Provider value={{ token, tokenDispatch, user, userDispatch}}>
       <BrowserRouter>
           <Routes>
-            <Route path='/' exact element={<div><LearningAssistantcopy/><LearningAssistant/></div>}/>
+            <Route path='/' exact element={<div style={{ height: "100%", width: "100%", maxHeight: "100vh", display: "flex", alignItems: "center" }}><LearningAssistantcopy/></div>}/>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path='/' exact={false} element={<ProtectedRoutes/>}>

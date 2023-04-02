@@ -1,29 +1,32 @@
 import React from 'react';
 import './circleNoTask.css';
-import { useState } from "react";
-import Popup from "./Popup";
 
 import ProgressBar from "./ProgressBar";
+import TaskCard from './Individual-task';
 
-function CircleNoTask() {
-   
-    const [showPopup, setShowPopup] = useState(false);
+function CircleNoTask({ image, goal, tasks }) {
+    const showButton = tasks.length < 4;
+    const displayTasks = tasks.map(
+        task => <TaskCard name={task.title} completed={task.completed} />
+    )
 
     const handleButtonClick = () => {
-      setShowPopup(true);
       console.log("clicked");
     };
 
     return (
-        <div className="circle-1">
-            <div className="div-under"><ProgressBar progress="50" /></div>
-            <div className="div-under-topic">
-                🎯 Learn UX Research
+        <div className="col">
+            <img src={image} alt="profile" class="circle-1" />
+            <ProgressBar progress="50" />
+            <div className="goal">
+                🎯 {goal}
             </div>
-            <div className="div-under-tasks">
+            <div>
+                { displayTasks }
+            </div>
+            { showButton &&
                 <button className="button-no-task" onClick={handleButtonClick}>+ Add Task (Max 4)</button>
-                {showPopup && <Popup />}
-            </div>
+                }
         </div>
     );
 }
