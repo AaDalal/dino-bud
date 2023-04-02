@@ -8,7 +8,7 @@ function NeedAPartner({ onClick, isOwner }) {
             <span aria-label="sparkle">
                 ✨
             </span>
-            Join
+            <span style={{ color: isOwner ? "grey" : undefined }}>Join</span>
             <span aria-label="sparkle">
                 ✨
             </span>

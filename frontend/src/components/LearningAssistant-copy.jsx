@@ -40,7 +40,7 @@ const LearningAssistantcopy = () => {
   }, [topicId, token])
 
   const removeTask = useCallback(async (taskId) => {
-    await axios.delete(`ta  sk/${topicId}`,  { headers: { Authorization: `Bearer ${token}` }, body: { id: taskId } });
+    await axios.delete(`task/${topicId}`,  { headers: { Authorization: `Bearer ${token}` }, body: { id: taskId } });
     fetchTopic();
   }, [topicId, token, fetchTopic])
 
@@ -50,7 +50,7 @@ const LearningAssistantcopy = () => {
   }, [topicId, token, fetchTopic])
 
   const updateTask = useCallback(async (taskId, title, completed) => {
-    await axios.post(`task/${topicId}`, { title, completed, id: taskId }, { headers: { Authorization: `Bearer ${token}` }});
+    await axios.post(`task/${topicId}`, { user1Goal, user2Goal, completed, id: taskId }, { headers: { Authorization: `Bearer ${token}` }});
     fetchTopic();
   }, [topicId, token, fetchTopic])
 
@@ -59,7 +59,7 @@ const LearningAssistantcopy = () => {
   }, [fetchTopic])
 
   const onJoin = async () => {
-    await axios.post(`/topic/${topicId}/add-user`, { }, { headers: { Authorization: `Bearer ${token}` } });
+    await axios.post(`/topic/${topicId}/add-user`, { user2Goal: "Hack More" }, { headers: { Authorization: `Bearer ${token}` } });
     fetchTopic();
   }
 
@@ -91,7 +91,7 @@ const LearningAssistantcopy = () => {
       alignItems: "center",
     }}>
       <div className="big-text">
-        404: Something's not right 😔
+        🔃 Trying to load!
       </div>
     </div>
   )
@@ -127,7 +127,7 @@ const LearningAssistantcopy = () => {
           removeTask={removeTask}
           tasks={myTasks} 
           image={BonnieProfileImage}
-          goal={topic?.user1Goal} 
+          goal={topic?.user1Goal}
           style={{
             alignSelf: "flex-start",
           }}/>
@@ -146,7 +146,7 @@ const LearningAssistantcopy = () => {
             image={CyldeProfileImage} 
             />
           )
-          : <NeedAPartner isOwner={isOwner} onClick={onJoin} />}
+          : <NeedAPartner isOwner={!isOwner} onClick={onJoin} />}
         </div>
       </div>
     </div>

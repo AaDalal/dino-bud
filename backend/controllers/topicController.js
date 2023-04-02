@@ -2,7 +2,7 @@ import topicModel from '../models/topicModel.js'
 import userModel from '../models/userModel.js'
 
 const addTopic = async (req, res) => {
-    const { user1Goal } = req.body;
+    const { user2Goal } = req.body;
 
     // TODO: decide on this
     // for now, user2 is always set to null on topic creation
@@ -12,7 +12,7 @@ const addTopic = async (req, res) => {
     if (user2 !== null && !(await userModel.findOneById({ _id: user2 }))) return res.status(400).json({ message: "Invalid user2" })
 
     try {
-        const topic = new topicModel({ user1: req.user.id, user2, user1Goal, user2Goal: null, tasks: [] });
+        const topic = new topicModel({ user1: req.user.id, user2, user1Goal, user2Goal: user2Goal || null, tasks: [] });
         const result = await topic.save();
         res.status(200).json(result);
     } catch (error) {
